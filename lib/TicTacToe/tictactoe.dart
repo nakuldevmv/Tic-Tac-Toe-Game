@@ -29,6 +29,9 @@ class _TicTacToeState extends State<TicTacToe> {
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
+          const SizedBox(
+            height: 100,
+          ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
@@ -38,11 +41,14 @@ class _TicTacToeState extends State<TicTacToe> {
                     style: const TextStyle(fontSize: 24)),
                 Text('Player O: $_scoreO',
                     style: const TextStyle(fontSize: 24)),
-                // ElevatedButton(
-                //     onPressed: _resetScore(),
-                //     child: const Icon(Icons.restart_alt_rounded))
+                ElevatedButton(
+                    onPressed: _resetScore,
+                    child: const Icon(Icons.restart_alt_rounded))
               ],
             ),
+          ),
+          const SizedBox(
+            height: 50,
           ),
           Container(
             // color: const Color.fromARGB(255, 221, 70, 70),
@@ -80,12 +86,6 @@ class _TicTacToeState extends State<TicTacToe> {
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.black)),
                           child: Center(
-                            // child: Text(
-                            //   _board[index] == ''
-                            //       ? index.toString()
-                            //       : _board[index],
-                            //   style: const TextStyle(fontSize: 40),
-                            // ),
                             child: Text(
                               _board[index],
                               style: const TextStyle(fontSize: 40),
@@ -175,10 +175,10 @@ class _TicTacToeState extends State<TicTacToe> {
     });
   }
 
-  // _resetScore() {
-  //   setState(() {
-  //     _scoreX = 0;
-  //     _scoreO = 0;
-  //   });
-  // }
+  void _resetScore() {
+    setState(() {
+      _scoreX = 0;
+      _scoreO = 0;
+    });
+  }
 }
