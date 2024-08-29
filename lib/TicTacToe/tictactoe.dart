@@ -162,10 +162,8 @@ class _TicTacToeState extends State<TicTacToe> {
     setState(() {
       if (winner == 'X') {
         _scoreX += 1;
-        print(_scoreX);
       } else if (winner == 'O') {
         _scoreO += 1;
-        print(_scoreO);
       }
     });
   }
@@ -177,7 +175,10 @@ class _TicTacToeState extends State<TicTacToe> {
     });
   }
 
-  void _resetScore() {
-    setState(() {});
-  }
+  // _resetScore() {
+  //   setState(() {
+  //     _scoreX = 0;
+  //     _scoreO = 0;
+  //   });
+  // }
 }
