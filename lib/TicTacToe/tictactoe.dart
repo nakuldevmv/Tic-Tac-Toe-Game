@@ -10,6 +10,8 @@ class TicTacToe extends StatefulWidget {
 class _TicTacToeState extends State<TicTacToe> {
   List<String> _board = List.generate(9, (index) => '');
   String _currentPlayer = 'X';
+  int _scoreX = 0;
+  int _scoreO = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +29,21 @@ class _TicTacToeState extends State<TicTacToe> {
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Player X: $_scoreX',
+                    style: const TextStyle(fontSize: 24)),
+                Text('Player O: $_scoreO',
+                    style: const TextStyle(fontSize: 24)),
+                // ElevatedButton(
+                //     onPressed: _resetScore(),
+                //     child: const Icon(Icons.restart_alt_rounded))
+              ],
+            ),
+          ),
           Container(
             // color: const Color.fromARGB(255, 221, 70, 70),
             // decoration: BoxDecoration(),
@@ -46,6 +63,7 @@ class _TicTacToeState extends State<TicTacToe> {
                               _board[index] = _currentPlayer;
                               if (_checkWin(_currentPlayer)) {
                                 _showWinDialoge(_currentPlayer);
+                                _updateScore(_currentPlayer);
                               } else if (_board
                                   .every((Element) => Element.isNotEmpty)) {
                                 _showDrawDialoge();
@@ -76,7 +94,7 @@ class _TicTacToeState extends State<TicTacToe> {
                         ),
                       );
                     })),
-          )
+          ),
         ],
       ),
     );
@@ -140,10 +158,26 @@ class _TicTacToeState extends State<TicTacToe> {
         });
   }
 
+  void _updateScore(String winner) {
+    setState(() {
+      if (winner == 'X') {
+        _scoreX += 1;
+        print(_scoreX);
+      } else if (winner == 'O') {
+        _scoreO += 1;
+        print(_scoreO);
+      }
+    });
+  }
+
   void _resetGame() {
     setState(() {
       _board = List.generate(9, (index) => '');
       _currentPlayer = 'X';
     });
+  }
+
+  void _resetScore() {
+    setState(() {});
   }
 }
