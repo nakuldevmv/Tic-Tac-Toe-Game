@@ -25,52 +25,58 @@ class _TicTacToeState extends State<TicTacToe> {
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       ),
       body: Column(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Expanded(
-              child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 5,
-                      mainAxisSpacing: 5),
-                  itemCount: 9,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          if (_board[index] == '') {
-                            _board[index] = _currentPlayer;
-                            if (_checkWin(_currentPlayer)) {
-                              _showWinDialoge(_currentPlayer);
-                            } else if (_board
-                                .every((Element) => Element.isNotEmpty)) {
-                              _showDrawDialoge();
-                            } else {
-                              _currentPlayer =
-                                  _currentPlayer == 'X' ? 'O' : 'X';
+          Container(
+            // color: const Color.fromARGB(255, 221, 70, 70),
+            // decoration: BoxDecoration(),
+            child: Expanded(
+                child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5),
+                    itemCount: 9,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            if (_board[index] == '') {
+                              _board[index] = _currentPlayer;
+                              if (_checkWin(_currentPlayer)) {
+                                _showWinDialoge(_currentPlayer);
+                              } else if (_board
+                                  .every((Element) => Element.isNotEmpty)) {
+                                _showDrawDialoge();
+                              } else {
+                                _currentPlayer =
+                                    _currentPlayer == 'X' ? 'O' : 'X';
+                              }
                             }
-                          }
-                        });
-                      },
-                      child: Container(
-                        height: 20,
-                        width: 20,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black)),
-                        child: Center(
-                          // child: Text(
-                          //   _board[index] == ''
-                          //       ? index.toString()
-                          //       : _board[index],
-                          //   style: const TextStyle(fontSize: 40),
-                          // ),
-                          child: Text(
-                            _board[index],
-                            style: const TextStyle(fontSize: 40),
+                          });
+                        },
+                        child: Container(
+                          height: 20,
+                          width: 20,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black)),
+                          child: Center(
+                            // child: Text(
+                            //   _board[index] == ''
+                            //       ? index.toString()
+                            //       : _board[index],
+                            //   style: const TextStyle(fontSize: 40),
+                            // ),
+                            child: Text(
+                              _board[index],
+                              style: const TextStyle(fontSize: 40),
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }))
+                      );
+                    })),
+          )
         ],
       ),
     );
