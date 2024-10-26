@@ -50,11 +50,11 @@ class _TicTacToeState extends State<TicTacToe> {
             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               const SizedBox(
-                height: 50,
+                height: 40,
               ),
               const Text("TIC TAC TOE", style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.white)),
               const SizedBox(
-                height: 70,
+                height: 50,
               ),
               Container(
                 width: 350,
