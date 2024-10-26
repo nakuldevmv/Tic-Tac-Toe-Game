@@ -36,44 +36,42 @@ class WebView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: gradientColors,
-            stops: gradientStops,
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: gradientColors,
+          stops: gradientStops,
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
         ),
-        child: Center(
-          child: Padding(
-            padding: padding,
-            child: Container(
-              height: innerContainerHeight,
-              width: innerContainerWidth,
-              decoration: BoxDecoration(
+      ),
+      child: Center(
+        child: Padding(
+          padding: padding,
+          child: Container(
+            height: innerContainerHeight,
+            width: innerContainerWidth,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(borderRadius),
+              ),
+              color: innerContainerColor,
+              boxShadow: [
+                BoxShadow(
+                  color: shadowColor,
+                  blurRadius: shadowBlurRadius,
+                  spreadRadius: shadowSpreadRadius,
+                  offset: const Offset(0, 4), // Adds a slight downward shadow
+                ),
+              ],
+            ),
+            child: ClipRRect(
                 borderRadius: BorderRadius.all(
                   Radius.circular(borderRadius),
                 ),
-                color: innerContainerColor,
-                boxShadow: [
-                  BoxShadow(
-                    color: shadowColor,
-                    blurRadius: shadowBlurRadius,
-                    spreadRadius: shadowSpreadRadius,
-                    offset: const Offset(0, 4), // Adds a slight downward shadow
-                  ),
-                ],
-              ),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(borderRadius),
-                  ),
-                  child: child),
-            ),
+                child: child),
           ),
         ),
       ),
