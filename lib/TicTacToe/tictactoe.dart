@@ -112,46 +112,45 @@ class _TicTacToeState extends State<TicTacToe> {
                 height: 400,
                 width: 350,
                 // margin: const EdgeInsets.all(10),
-                child: Expanded(
-                    child: GridView.builder(
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 10, mainAxisSpacing: 10),
-                        itemCount: 9,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                if (_board[index] == '') {
-                                  _board[index] = _currentPlayer;
-                                  if (_checkWin(_currentPlayer)) {
-                                    _showWinDialoge(_currentPlayer);
-                                    _updateScore(_currentPlayer);
-                                  } else if (_board.every((Element) => Element.isNotEmpty)) {
-                                    _showDrawDialoge();
-                                  } else {
-                                    _currentPlayer = _currentPlayer == 'X' ? 'O' : 'X';
-                                  }
-                                }
-                              });
-                            },
-                            child: Container(
-                              // padding: const EdgeInsets.all(50),
-                              decoration: BoxDecoration(
-                                color: const Color.fromARGB(201, 41, 17, 62),
-                                borderRadius: const BorderRadius.all(Radius.circular(30)),
-                                border: Border.all(
-                                  width: 1.5,
-                                  color: const Color.fromARGB(198, 255, 255, 255),
-                                ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  _board[index],
-                                  style: const TextStyle(fontSize: 75, fontWeight: FontWeight.bold, color: Colors.white),
-                                ),
-                              ),
+                child: GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 10, mainAxisSpacing: 10),
+                    itemCount: 9,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            if (_board[index] == '') {
+                              _board[index] = _currentPlayer;
+                              if (_checkWin(_currentPlayer)) {
+                                _showWinDialoge(_currentPlayer);
+                                _updateScore(_currentPlayer);
+                              } else if (_board.every((Element) => Element.isNotEmpty)) {
+                                _showDrawDialoge();
+                              } else {
+                                _currentPlayer = _currentPlayer == 'X' ? 'O' : 'X';
+                              }
+                            }
+                          });
+                        },
+                        child: Container(
+                          // padding: const EdgeInsets.all(50),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(201, 41, 17, 62),
+                            borderRadius: const BorderRadius.all(Radius.circular(30)),
+                            border: Border.all(
+                              width: 1.5,
+                              color: const Color.fromARGB(198, 255, 255, 255),
                             ),
-                          );
-                        })),
+                          ),
+                          child: Center(
+                            child: Text(
+                              _board[index],
+                              style: const TextStyle(fontSize: 75, fontWeight: FontWeight.bold, color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
               ),
             ],
           ),
