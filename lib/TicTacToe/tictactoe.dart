@@ -212,6 +212,7 @@ class _TicTacToeState extends State<TicTacToe> {
 
   void _showWinDialoge(String winner) {
     showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
